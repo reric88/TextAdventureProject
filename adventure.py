@@ -16,25 +16,25 @@ no_list = ['No', 'N', 'Na', 'Nah', 'Nope']
 stat_list = ['Weak', 'Average', 'Strong']
 height_list = ['Short', 'Average', 'Tall']
 beauty_list = ['Ugly', 'Average', 'Beautiful']
+npc_choose = [
+    'That\'s quite alright, I will decide...',
+    'I understand. Allow me to choose...',
+    'Indecisive? How about this...',
+    'I will choose for you.',
+    'You can\'t decide? Then I will choose.',
+    'Allow me to provide something in your stead...',
+    'Now now, we can\'t be leaving things empty.',
+    'Is your head as empty as this reponse? How about...',
+    'I will quickly pick for you...',
+    'I can provide you with this result.'
+
+    ]
 #endregion
 
 #region allowed_lists
 # Branching depending on users input
 def allowed_lists(_list):
     match = False
-    # Checking if there is a match in the stat_list
-    if _list == stat_list:
-        while not match:
-            for item in _list:
-                print(item)
-            stat = input('\nEnter It\'s body type:\n').capitalize()
-            if stat in _list:
-                match = True
-                input(f'\n{stat}. Splendid. Truly splendid.')
-                return stat
-            else:
-                input('No, that won\'t work.')
-                input('Your options are below.\n')
     # Checking if there is a match in the height_list
     if _list == height_list:
         while not match:
@@ -45,9 +45,34 @@ def allowed_lists(_list):
                 match = True
                 input(f'\nIt is {height}. Magnificent.')
                 return height
+            if height == '':
+                match = True
+                input(npc_choose[random.randrange(0, 9)])
+                height = height_list[random.randrange(0, 2)]
+                input(f'\nIt is {height}. Magnificent.')
+                return height
             else:
                 input('No, that won\'t work.')
                 input('Your options are below.\n') 
+    # Checking if there is a match in the stat_list
+    if _list == stat_list:
+        while not match:
+            for item in _list:
+                print(item)
+            stat = input('\nEnter It\'s body type:\n').capitalize()
+            if stat in _list:
+                match = True
+                input(f'\n{stat}. Splendid. Truly splendid.')
+                return stat
+            if stat == '':
+                match = True
+                input(npc_choose[random.randrange(0, 9)])
+                stat = stat_list[random.randrange(0, 2)]
+                input(f'\n{stat}. Splendid. Truly splendid.')
+                return stat
+            else:
+                input('No, that won\'t work.')
+                input('Your options are below.\n')
     # Checking if there is a match in the beauty_list 
     if _list == beauty_list:
         while not match:
@@ -56,6 +81,12 @@ def allowed_lists(_list):
             beauty = input('\nEnter what It looks like: ').capitalize()
             if beauty in _list:
                 match = True
+                input(f'\nAmazing. It is {beauty}.')
+                return beauty
+            if beauty == '':
+                match = True
+                input(npc_choose[random.randrange(0, 9)])
+                beauty = beauty_list[random.randrange(0, 2)]
                 input(f'\nAmazing. It is {beauty}.')
                 return beauty
             else:
@@ -101,6 +132,9 @@ response()
 #If user responds with yes, start game, otherwise end
 # Have the user input their name and characteristics
 name = input('Please enter It\'s name: ')
+if name == '':
+    name = names_list[random.randrange(0, 922)]
+    input(npc_choose[random.randrange(0, 9)])
 input(f'\n{name}...')
 input('Yes, of course. That is a wonderful name.')
 input('Please enter It\'s height. Below are your choices:\n')
@@ -116,7 +150,8 @@ input('In this world, we do not get to choose who we are.\n')
 input(f'({name} has been discarded.)\n')
 input('It\'s name will be...\n')
 random_chars()
-input('You awaken in a soft bed. The bright sunlight is streaming in through the window and there are birds chirping outside. You can hear a dog barking in the distance.' )
+time.sleep(2)
+input('\nYou awaken in a soft bed. The bright sunlight is streaming in through the window and there are birds chirping outside. You can hear a dog barking in the distance.' )
 
 
 
