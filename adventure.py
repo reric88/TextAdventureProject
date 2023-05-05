@@ -1,13 +1,20 @@
 # Simple Text Adventure Project
 
-yes_list = ['Yes', 'Y', 'Yeah']
-no_list = ['No', 'N', 'Nah']
+
+
+# Predefined lists to check against user responses 
+yes_list = ['Yes', 'Y', 'Ya', 'Yeah', 'Sure']
+no_list = ['No', 'N', 'Na', 'Nah', 'Nope']
 stat_list = ['Weak', 'Average', 'Strong']
 height_list = ['Short', 'Average', 'Tall']
 beauty_list = ['Ugly', 'Average', 'Beautiful']
 
+
+
+# Branching depending on users input
 def allowed_lists(_list):
     match = False
+    # Checking if there is a match in the stat_list
     if _list == stat_list:
         while not match:
             for item in _list:
@@ -20,6 +27,7 @@ def allowed_lists(_list):
             else:
                 input('No, that won\'t work.')
                 input('Your options are below.\n')
+    # Checking if there is a match in the height_list
     if _list == height_list:
         while not match:
             for item in _list:
@@ -31,7 +39,8 @@ def allowed_lists(_list):
                 return height
             else:
                 input('No, that won\'t work.')
-                input('Your options are below.\n')  
+                input('Your options are below.\n') 
+    # Checking if there is a match in the beauty_list 
     if _list == beauty_list:
         while not match:
             for item in _list:
@@ -45,9 +54,9 @@ def allowed_lists(_list):
                 input('No, that won\'t work.')
                 input('Your options are below.\n')  
 
-
+#If user responds with yes, start game, otherwise end
 def start_game():
-    
+
 # Have the user input their name and characteristics
     name = input('Please enter It\'s name: ')
     input(f'\n{name}...')
@@ -66,10 +75,12 @@ def start_game():
     input('It\'s name will be...\n')
 
 
+
+# Check if user enters 'Yes', 'No' or something else
 def response():
     match = False
     while not match:
-        responding = input('Are you here to participate?\n')
+        responding = input('Are you here to participate?\n:').capitalize()
         if responding in yes_list:
             match = True
             input(f'\nWonderful.')
