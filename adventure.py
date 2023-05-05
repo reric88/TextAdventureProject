@@ -47,6 +47,7 @@ def allowed_lists(_list):
 
 
 def start_game():
+    
 # Have the user input their name and characteristics
     name = input('Please enter It\'s name: ')
     input(f'\n{name}...')
@@ -75,37 +76,15 @@ def response():
             start_game()
 
         elif responding in no_list:
-            input(f'\nI see.')
-            input(f'Unfortunately, you may not loiter.')
-            input(f'Farewell.')
+            input('\nI see.')
+            input('Unfortunately, you may not loiter.')
+            input('Farewell.')
+            print('(The connection has been closed.)')
             match = True
             return
         else:
             input('\nThe question is simple.')
 
-        
-
-    # if _list == yes_list or _list == no_list:
-    #     if _list == yes_list:
-    #         while not match:
-    #             _yes = input('Are you here to participate?').capitalize()
-    #             if _yes in _list:
-    #                 match = True
-    #                 input(f'\nWonderful.')
-    #                 return _yes
-    #             else:
-    #                 input('\nThe question is simple.') 
-    #     if _list == no_list:
-    #         while not match:
-    #             _no = input('Are you here to participate?').capitalize()
-    #             if _no in _list:
-    #                 match = True
-    #                 input(f'\nI see.')
-    #                 input(f'Unfortunately, you may not loiter.')
-    #                 input(f'Farewell.')
-    #                 return _no
-    #             else:
-    #                 input('\nThe question is simple.') 
 
 
 
